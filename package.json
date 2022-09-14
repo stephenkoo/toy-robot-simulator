@@ -1,0 +1,9 @@
+{
+  "name": "toy-robot-simulator",
+  "version": "1.0.0",
+  "description": "App to move a toy robot around a table as a coding exercise",
+  "scripts": {
+  },
+  "author": "Stephen Koo",
+  "license": "ISC"
+}

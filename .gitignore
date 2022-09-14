@@ -1,0 +1,9 @@
+node_modules
+/dist
+/build
+/lib
+/coverage
+
+# OS metadata
+.DS_Store
+Thumbs.db
