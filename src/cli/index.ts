@@ -2,6 +2,7 @@ import { defaultTableBoundary, initialRobotState } from "../robot/constants.js";
 import { logger } from "./utils/logger.js";
 import { RobotContext, Coordinates } from "../robot/types/index.js";
 import { Command } from "commander";
+import { runAutomatedMode } from "./automated-mode.js";
 import { runInteractiveMode } from "./interactive-mode.js";
 
 const createRobot = (): RobotContext => ({
@@ -14,6 +15,9 @@ const program = new Command();
 
 export const initializeCliApp = async () => {
   logger.title("TOY ROBOT SIMULATOR 🤖");
+  logger.info(
+    "You can also run this program with commands in a .txt file, e.g. `npm run start -- -f datasets/set1.txt`\n"
+  );
 
   logger.info(
     `Available commands:\n
@@ -26,9 +30,21 @@ EXIT    - Exits the program
 `
   );
 
-  program.description("Toy robot simulator").parse(process.argv);
+  program
+    .description("Toy robot simulator")
+    .option(
+      "-f, --file <filename>.txt",
+      "execute text file(s) with robot commands"
+    )
+    .parse(process.argv);
+
+  const { file } = program.opts<{ file: string }>();
 
   const robot = createRobot();
 
-  runInteractiveMode(robot);
+  if (file) {
+    runAutomatedMode(robot, file);
+  } else {
+    runInteractiveMode(robot);
+  }
 };
