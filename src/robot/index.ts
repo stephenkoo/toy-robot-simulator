@@ -35,4 +35,12 @@ export const initializeApp = () => {
   robotReducer(robot, {
     type: EventType.MoveForward,
   });
+
+  robotReducer(robot, {
+    type: EventType.TurnLeft,
+  });
+
+  robotReducer(robot, {
+    type: EventType.TurnRight,
+  });
 };

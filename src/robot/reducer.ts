@@ -3,6 +3,8 @@ import {
   handleOffTableInvalidAction,
   handlePlace,
   handleReport,
+  handleTurnLeft,
+  handleTurnRight,
 } from "./transitions/index.js";
 import {
   isOffTableContext,
@@ -23,6 +25,8 @@ const reduceOffTable = (
       return handlePlace(context, event);
     case EventType.Report:
       return handleReport(context);
+    case EventType.TurnRight:
+    case EventType.TurnLeft:
     case EventType.MoveForward:
       return handleOffTableInvalidAction(context);
     default:
@@ -39,6 +43,10 @@ const reduceOnTable = (
       return handlePlace(context, event);
     case EventType.Report:
       return handleReport(context);
+    case EventType.TurnRight:
+      return handleTurnRight(context);
+    case EventType.TurnLeft:
+      return handleTurnLeft(context);
     case EventType.MoveForward:
       return handleMoveForward(context);
     default:
