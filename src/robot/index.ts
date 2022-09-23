@@ -31,4 +31,8 @@ export const initializeApp = () => {
     position: [2, 3],
     direction: xYWest,
   });
+
+  robotReducer(robot, {
+    type: EventType.MoveForward,
+  });
 };

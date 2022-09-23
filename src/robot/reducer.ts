@@ -1,4 +1,9 @@
-import { handlePlace, handleReport } from "./transitions/index.js";
+import {
+  handleMoveForward,
+  handleOffTableInvalidAction,
+  handlePlace,
+  handleReport,
+} from "./transitions/index.js";
 import {
   isOffTableContext,
   isOnTableContext,
@@ -18,6 +23,8 @@ const reduceOffTable = (
       return handlePlace(context, event);
     case EventType.Report:
       return handleReport(context);
+    case EventType.MoveForward:
+      return handleOffTableInvalidAction(context);
     default:
       return context;
   }
@@ -32,6 +39,8 @@ const reduceOnTable = (
       return handlePlace(context, event);
     case EventType.Report:
       return handleReport(context);
+    case EventType.MoveForward:
+      return handleMoveForward(context);
     default:
       return context;
   }
