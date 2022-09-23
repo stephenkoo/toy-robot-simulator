@@ -1,4 +1,4 @@
-import { defaultTableBoundary } from "./constants.js";
+import { defaultTableBoundary, xYWest } from "./constants.js";
 import { reducer as robotReducer } from "./reducer.js";
 import { RobotContext } from "./types/context.js";
 import { EventType } from "./types/events.js";
@@ -24,5 +24,11 @@ export const initializeApp = () => {
 
   robot = robotReducer(robot, {
     type: EventType.Report,
+  });
+
+  robotReducer(robot, {
+    type: EventType.Place,
+    position: [2, 3],
+    direction: xYWest,
   });
 };

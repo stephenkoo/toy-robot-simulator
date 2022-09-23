@@ -1,4 +1,4 @@
-import { handleReport } from "./transitions/index.js";
+import { handlePlace, handleReport } from "./transitions/index.js";
 import {
   isOffTableContext,
   isOnTableContext,
@@ -14,6 +14,8 @@ const reduceOffTable = (
   event: RobotEvent
 ) => {
   switch (event.type) {
+    case EventType.Place:
+      return handlePlace(context, event);
     case EventType.Report:
       return handleReport(context);
     default:
@@ -26,6 +28,8 @@ const reduceOnTable = (
   event: RobotEvent
 ) => {
   switch (event.type) {
+    case EventType.Place:
+      return handlePlace(context, event);
     case EventType.Report:
       return handleReport(context);
     default:
