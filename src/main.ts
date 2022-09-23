@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import { initializeApp } from "./robot/index.js";
+import { initializeCliApp } from "./cli/index.js";
 
-initializeApp();
+initializeCliApp();
